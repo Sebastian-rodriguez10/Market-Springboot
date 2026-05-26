@@ -1,3 +1,20 @@
 spring:
   application:
     name: market
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/proyectv1
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate: #Orm java
+      ddl-auto: none
+    show-sql: true #Muestra en los logs que consulta se esta ejecutando
+    properties:
+      hibernate: 
+        "[format_sql]": true #Formatea el lenguaje SQL
+
+server:
+  port: 1234
