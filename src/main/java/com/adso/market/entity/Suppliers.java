@@ -1,7 +1,9 @@
 package com.adso.market.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,10 +34,8 @@ public class Suppliers {
     @Column(name = "phone")
     private String phone;
 
-    // @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    // private List<Products> product = new ArrayList<>();
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+    private List<Inventory> inventories = new ArrayList<>();
 
-    // id int auto_increment primary key,
-    // name varchar(50) not null,
-    // phone varchar(10) not null
+
 }
