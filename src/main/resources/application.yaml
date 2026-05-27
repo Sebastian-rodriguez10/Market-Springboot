@@ -3,9 +3,9 @@ spring:
     name: market
     
   datasource:
-    url: jdbc:mysql://localhost:3306/Market
+    url: jdbc:mysql://localhost:3306/market
     username: root
-    password:
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
