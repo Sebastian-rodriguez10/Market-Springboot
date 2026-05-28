@@ -38,9 +38,7 @@ public class Products {
     @Column(name = "price")
     private BigDecimal price;
 
-    @NotNull(message = "El campo es oblicatorio")
-    @Size(max = 100)
-    @Column(name = "barCode")
+    @Column(name = "bar_code", nullable = false, unique = true)
     private String barCode;
 
     @NotNull(message = "El campo es oblicatorio")
