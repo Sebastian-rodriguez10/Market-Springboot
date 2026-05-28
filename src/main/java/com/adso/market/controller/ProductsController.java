@@ -9,6 +9,7 @@ import com.adso.market.dto.productDTO.ProductDTO;
 import com.adso.market.entity.Products;
 import com.adso.market.service.ProductService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -25,7 +26,7 @@ public class ProductsController {
 
     @PostMapping("/post-product")
     public HttpGlobalResponse<ProductDTO> postProduct(
-            @RequestBody ProductDTO data){
+            @Valid @RequestBody ProductDTO data){
 
         return productService.postProduct(data);
     }
@@ -33,7 +34,7 @@ public class ProductsController {
     @PutMapping("/put-product/{id}")
     public HttpGlobalResponse<ProductDTO> updateProduct(
             @PathVariable Long id,
-            @RequestBody ProductDTO data){
+            @Valid @RequestBody ProductDTO data){
 
         return productService.updateProduct(id, data);
     }
