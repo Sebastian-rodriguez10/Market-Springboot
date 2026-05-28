@@ -34,7 +34,7 @@ public class Suppliers {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "suppliers", cascade = CascadeType.ALL)
     private List<Inventory> inventories = new ArrayList<>();
 
 
