@@ -48,9 +48,9 @@ public class Products {
     private Boolean state;
 
     @ManyToOne
-    @JoinColumn(name = "id_category", nullable = false) // foreign key(id_category) references category(id)
+    @JoinColumn(name = "category", nullable = false) // foreign key(id_category) references category(id)
     private Category category;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
     private List<Inventory> inventories = new ArrayList<>();
 }
