@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -35,7 +36,10 @@ public class CategoryController {
     }
 
     
-
+    @PutMapping("/put-category/{id}")
+    public HttpGlobalResponse<CategoryNameDTO> putCategory(@PathVariable Long id, @RequestBody CategoryNameDTO name) {
+    return categoryService.updateCategory(id, name);
+}
     
     
     

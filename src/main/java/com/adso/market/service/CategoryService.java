@@ -17,14 +17,14 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public List<Object[]> getCategory(Long id){
+    public List<Object[]> getCategory(Long id) {
         List<Object[]> response = categoryRepository.getCategoryWithProducts(id);
         return response;
     }
 
-    public HttpGlobalResponse<CategoryNameDTO> postCategory (CategoryNameDTO name){
+    public HttpGlobalResponse<CategoryNameDTO> postCategory(CategoryNameDTO name) {
         Category category = new Category();
-        //CategoryNameDTO categoryNameDTO = new CategoryNameDTO();
+        // CategoryNameDTO categoryNameDTO = new CategoryNameDTO();
         category.setName(name.getName());
         categoryRepository.save(category);
         HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
@@ -32,6 +32,22 @@ public class CategoryService {
         response.setMessage("categoria creada correctamente");
         return response;
 
-        
+    }
+
+    public HttpGlobalResponse<CategoryNameDTO> updateCategory(Long id, CategoryNameDTO name) {
+
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("categoria no encontrada"));
+
+        category.setName(name.getName());
+
+        categoryRepository.save(category);
+
+        HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
+
+        response.setData(name);
+        response.setMessage("categoria actualizada correctamente");
+
+        return response;
     }
 }
