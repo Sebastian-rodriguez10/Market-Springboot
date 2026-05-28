@@ -23,8 +23,8 @@ import lombok.Data;
 @Data
 @Table(name = "products")
 public class Products {
-    
-    @Id 
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -48,7 +48,7 @@ public class Products {
     private Boolean state;
 
     @ManyToOne
-    @JoinColumn(name = "category", nullable = false) // foreign key(id_category) references category(id)
+    @JoinColumn(name = "id_category", nullable = false)
     private Category category;
 
     @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
