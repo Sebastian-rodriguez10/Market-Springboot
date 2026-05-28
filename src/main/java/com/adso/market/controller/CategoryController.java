@@ -7,6 +7,7 @@ import com.adso.market.dto.HttpGlobalResponse;
 import com.adso.market.dto.categoryDTO.CategoryNameDTO;
 import com.adso.market.service.CategoryService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -31,12 +32,12 @@ public class CategoryController {
     }
 
     @PostMapping("/post-category")
-    public HttpGlobalResponse<CategoryNameDTO> postCategory(@RequestBody CategoryNameDTO nombreCategoria) {
+    public HttpGlobalResponse<CategoryNameDTO> postCategory(@Valid @RequestBody CategoryNameDTO nombreCategoria) {
         return categoryService.postCategory(nombreCategoria);
     }
 
     @PutMapping("/put-category/{id}")
-    public HttpGlobalResponse<CategoryNameDTO> putCategory(@PathVariable Long id, @RequestBody CategoryNameDTO name) {
+    public HttpGlobalResponse<CategoryNameDTO> putCategory(@Valid @PathVariable Long id, @RequestBody CategoryNameDTO name) {
         return categoryService.updateCategory(id, name);
 
     }
