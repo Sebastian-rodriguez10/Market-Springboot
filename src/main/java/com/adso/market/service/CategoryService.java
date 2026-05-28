@@ -1,6 +1,7 @@
 package com.adso.market.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -50,4 +51,23 @@ public class CategoryService {
 
         return response;
     }
+
+    public HttpGlobalResponse<String> deleteCategory(Long id){
+
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+
+        HttpGlobalResponse<String> response = new HttpGlobalResponse<>();
+
+        if(optionalCategory.isPresent()){
+            Category category = optionalCategory.get();
+            categoryRepository.delete(category);
+            response.setData("ok");
+            response.setMessage("categoria eliminada correctamente");
+        } else {
+            response.setData("error");
+            response.setMessage("categoria no encontrada");
+        }
+
+        return response;
+}
 }
