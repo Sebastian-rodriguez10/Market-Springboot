@@ -56,9 +56,7 @@ public class ProductService {
     }
 
     // PUT
-    public HttpGlobalResponse<ProductDTO> updateProduct(
-            Long id,
-            ProductDTO data) {
+    public HttpGlobalResponse<ProductDTO> updateProduct(Long id, ProductDTO data) {
 
         Optional<Products> optionalProduct = productRepository.findById(id);
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.adso.market.dto.HttpGlobalResponse;
 import com.adso.market.dto.categoryDTO.CategoryNameDTO;
@@ -18,6 +19,7 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
+    @Transactional
     public List<Object[]> getCategory(Long id) {
         List<Object[]> response = categoryRepository.getCategoryWithProducts(id);
         return response;
