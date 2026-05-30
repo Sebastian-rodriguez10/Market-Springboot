@@ -1,4 +1,4 @@
-package com.adso.market.dto.productDTO;
+package com.adso.market.dto.product;
 
 import java.math.BigDecimal;
 

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.adso.market.dto.HttpGlobalResponse;
-import com.adso.market.dto.categoryDTO.CategoryNameDTO;
-import com.adso.market.dto.employesDTO.RegisterEmpleoyesDTO;
-import com.adso.market.dto.employesDTO.ResponseEmployeesDTO;
+import com.adso.market.dto.category.CategoryNameDTO;
+import com.adso.market.dto.employes.RegisterEmpleoyesDTO;
+import com.adso.market.dto.employes.ResponseEmployeesDTO;
 import com.adso.market.entity.Employees;
 import com.adso.market.repository.EmployeesRepository;
 

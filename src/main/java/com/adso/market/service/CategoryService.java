@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adso.market.dto.HttpGlobalResponse;
-import com.adso.market.dto.categoryDTO.CategoryNameDTO;
+import com.adso.market.dto.category.CategoryNameDTO;
 import com.adso.market.entity.Category;
 import com.adso.market.repository.CategoryRepository;
 

@@ -1,4 +1,4 @@
-package com.adso.market.dto.categoryDTO;
+package com.adso.market.dto.category;
 
 import lombok.Data;
 

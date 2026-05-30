@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adso.market.dto.HttpGlobalResponse;
-import com.adso.market.dto.categoryDTO.CategoryNameDTO;
+import com.adso.market.dto.category.CategoryNameDTO;
 import com.adso.market.service.CategoryService;
 
 import jakarta.validation.Valid;

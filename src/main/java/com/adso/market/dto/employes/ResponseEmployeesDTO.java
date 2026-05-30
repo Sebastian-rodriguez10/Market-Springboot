@@ -1,4 +1,4 @@
-package com.adso.market.dto.employesDTO;
+package com.adso.market.dto.employes;
 
 import java.time.LocalDate;
 import lombok.Data;

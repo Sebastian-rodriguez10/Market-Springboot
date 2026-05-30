@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adso.market.dto.HttpGlobalResponse;
-import com.adso.market.dto.employesDTO.RegisterEmpleoyesDTO;
-import com.adso.market.dto.employesDTO.ResponseEmployeesDTO;
+import com.adso.market.dto.employes.RegisterEmpleoyesDTO;
+import com.adso.market.dto.employes.ResponseEmployeesDTO;
 import com.adso.market.service.EmpleoyeesService;
 
 import jakarta.validation.Valid;
