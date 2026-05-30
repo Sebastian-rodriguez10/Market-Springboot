@@ -25,24 +25,17 @@ public class ProductsController {
     }
 
     @PostMapping("/post-product")
-    public HttpGlobalResponse<ProductDTO> postProduct(
-            @Valid @RequestBody ProductDTO data){
-
+    public HttpGlobalResponse<ProductDTO> postProduct(@Valid @RequestBody ProductDTO data){
         return productService.postProduct(data);
     }
 
     @PutMapping("/put-product/{id}")
-    public HttpGlobalResponse<ProductDTO> updateProduct(
-            @PathVariable Long id,
-            @Valid @RequestBody ProductDTO data){
-
+    public HttpGlobalResponse<ProductDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO data){
         return productService.updateProduct(id, data);
     }
 
     @DeleteMapping("/delete-product/{id}")
-    public HttpGlobalResponse<String> deleteProduct(
-            @PathVariable Long id){
-
+    public HttpGlobalResponse<String> deleteProduct(@PathVariable Long id){
         return productService.deleteProduct(id);
     }
 }

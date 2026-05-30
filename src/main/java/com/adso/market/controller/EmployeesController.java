@@ -43,12 +43,12 @@ public class EmployeesController {
 
     @DeleteMapping("/delete/{id}")
     public HttpGlobalResponse<String> deleteEmployee(@PathVariable Long id) {
-    return empleoyeesService.deleteEmployee(id);
+        return empleoyeesService.deleteEmployee(id);
     }
 
     @PutMapping("/update/{id}")
     public HttpGlobalResponse<ResponseEmployeesDTO> putEmployee(@PathVariable Long id, @Valid @RequestBody RegisterEmpleoyesDTO updateDTO) {
-    return empleoyeesService.putEmployee(id, updateDTO);
+        return empleoyeesService.putEmployee(id, updateDTO);
     }
 
 }
