@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.adso.market.dto.HttpGlobalResponse;
+import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.product.ProductDTO;
 import com.adso.market.entity.Category;
 import com.adso.market.entity.Products;
@@ -107,22 +108,19 @@ public class ProductService {
     }
 
     // DELETE SOFT
-    public HttpGlobalResponse<String> deleteProduct(Long id) {
+    public MessageResponseDTO deleteProduct(Long id) {
 
         Optional<Products> optionalProduct = productRepository.findById(id);
 
-        HttpGlobalResponse<String> response = new HttpGlobalResponse<>();
-
+        MessageResponseDTO response = new MessageResponseDTO();
         if (optionalProduct.isPresent()) {
             Products product = optionalProduct.get();
             product.setState(false);
             productRepository.save(product);
 
-            response.setData("ok");
             response.setMessage("producto eliminado correctamente");
 
         } else {
-            response.setData("error");
             response.setMessage("producto no encontrado");
         }
 
