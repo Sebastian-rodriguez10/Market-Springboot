@@ -1,5 +1,6 @@
 package com.adso.market.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,20 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
 
     // GET
-    public List<Products> getProducts() {
-        return productRepository.findAll();
+    public List<ProductDTO> getProducts() {
+        List<ProductDTO> listProducts = new ArrayList<>();
+        List<Products> productsFound = productRepository.findAll();
+
+        for (Products products : productsFound) {
+            ProductDTO pro = new ProductDTO();
+            pro.setName(products.getName());
+            pro.setBarCode(products.getBarCode());
+            pro.setPrice(products.getPrice());
+            pro.setIdCategory(products.getCategory().getId());
+            listProducts.add(pro);
+        }
+
+        return listProducts;
     }
 
     // POST
