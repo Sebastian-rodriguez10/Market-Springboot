@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.adso.market.dto.HttpGlobalResponse;
+import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.category.CategoryNameDTO;
 import com.adso.market.dto.employes.RegisterEmpleoyesDTO;
 import com.adso.market.dto.employes.ResponseEmployeesDTO;
 import com.adso.market.entity.Employees;
 import com.adso.market.repository.EmployeesRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -87,19 +89,17 @@ public class EmpleoyeesService {
     return employeeFound;
 }
 
-    public HttpGlobalResponse<String> deleteEmployee(Long id) {
-    HttpGlobalResponse<String> response = new HttpGlobalResponse<>();
+    public MessageResponseDTO deleteEmployee(Long id) {
+    MessageResponseDTO response = new MessageResponseDTO();
     Optional<Employees> employeeNew = employeesRepository.findById(id);
     
     if (employeeNew.isEmpty()) {
         response.setMessage("Empleado no encontrado");
-        response.setData(null);
         return response;
     }
 
     employeesRepository.deleteById(id);
     response.setMessage("Empleado eliminado con éxito");
-    response.setData("ID eliminado: " + id);
     return response;
     }
 
@@ -133,5 +133,12 @@ public class EmpleoyeesService {
     response.setData(responseDTO);
 
     return response;
-}
+    }
+
+    @Transactional
+    public List<Object[]> getEmployesByRol(String rol) {
+        List<Object[]> response = employeesRepository.paListEmployeesByRole(rol);
+        return response;
+    }
+
 }

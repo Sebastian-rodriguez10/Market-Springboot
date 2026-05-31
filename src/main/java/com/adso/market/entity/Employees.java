@@ -38,6 +38,7 @@ public class Employees {
         regexp = "administrador|cajero|auxiliar", 
         message = "Rol invalido'"
     )
+    @NotNull(message = "El campo es oblicatorio")
     @Column(name = "role_position")
     private String rolePosition;
 
