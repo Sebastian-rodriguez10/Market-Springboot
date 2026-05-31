@@ -1,5 +1,6 @@
 package com.adso.market.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,16 +22,35 @@ public class CategoryService {
 
     @Transactional
     public List<Object[]> getCategory(Long id) {
+
+        Optional<Category> category = categoryRepository.findById(id);
+
+        if (category.isEmpty()) {
+            List<Object[]> res = new ArrayList<>();
+            res.add(new Object[]{"La categoria consultada no existe"});
+            return res;
+        }
+
         List<Object[]> response = categoryRepository.getCategoryWithProducts(id);
         return response;
+
     }
 
     public HttpGlobalResponse<CategoryNameDTO> postCategory(CategoryNameDTO name) {
+
+        Optional<Category> categoryFound = categoryRepository.findByName(name.getName());
+        HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
+
+        if (categoryFound.isPresent()) {
+            response.setData(name);
+            response.setMessage("Esta categoria ya existe");
+            return response;
+        }
+
         Category category = new Category();
-        // CategoryNameDTO categoryNameDTO = new CategoryNameDTO();
+
         category.setName(name.getName());
         categoryRepository.save(category);
-        HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
         response.setData(name);
         response.setMessage("categoria creada correctamente");
         return response;
@@ -38,15 +58,18 @@ public class CategoryService {
     }
 
     public HttpGlobalResponse<CategoryNameDTO> updateCategory(Long id, CategoryNameDTO name) {
-
-        Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("categoria no encontrada"));
-
-        category.setName(name.getName());
-
-        categoryRepository.save(category);
-
+        
         HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
+        Optional<Category> category = categoryRepository.findById(id);
+
+        if (category.isEmpty()) {
+            response.setMessage("Categoria no encontrada");
+            return response;
+        }
+
+        Category newCategory = category.get();
+
+        categoryRepository.save(newCategory);
 
         response.setData(name);
         response.setMessage("categoria actualizada correctamente");

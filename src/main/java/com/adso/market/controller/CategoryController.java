@@ -37,7 +37,7 @@ public class CategoryController {
     }
 
     @PutMapping("/put-category/{id}")
-    public HttpGlobalResponse<CategoryNameDTO> putCategory(@Valid @PathVariable Long id, @RequestBody CategoryNameDTO name) {
+    public HttpGlobalResponse<CategoryNameDTO> putCategory(@PathVariable Long id,@Valid @RequestBody CategoryNameDTO name) {
         return categoryService.updateCategory(id, name);
 
     }
