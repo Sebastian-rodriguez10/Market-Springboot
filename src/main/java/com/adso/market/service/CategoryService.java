@@ -40,7 +40,11 @@ public class CategoryService {
 
         Optional<Category> categoryFound = categoryRepository.findByName(name.getName());
         HttpGlobalResponse<CategoryNameDTO> response = new HttpGlobalResponse<>();
-
+        if (name == null || name.getName().isEmpty()) {
+            response.setData(name);
+            response.setMessage("la categoria no puede ser null ni puede estar vacia");
+            return response;
+        }
         if (categoryFound.isPresent()) {
             response.setData(name);
             response.setMessage("Esta categoria ya existe");
