@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adso.market.dto.HttpGlobalResponse;
+import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.category.CategoryNameDTO;
 import com.adso.market.entity.Category;
 import com.adso.market.repository.CategoryRepository;
@@ -81,19 +82,22 @@ public class CategoryService {
         return response;
     }
 
-    public HttpGlobalResponse<String> deleteCategory(Long id){
+    public HttpGlobalResponse<MessageResponseDTO> deleteCategory(Long id){
 
         Optional<Category> optionalCategory = categoryRepository.findById(id);
 
-        HttpGlobalResponse<String> response = new HttpGlobalResponse<>();
+        HttpGlobalResponse<MessageResponseDTO> response = new HttpGlobalResponse<>();
+        MessageResponseDTO message = new MessageResponseDTO();
 
         if(optionalCategory.isPresent()){
+            message.setMessage("ok");
             Category category = optionalCategory.get();
             categoryRepository.delete(category);
-            response.setData("ok");
+            response.setData(message);
             response.setMessage("categoria eliminada correctamente");
         } else {
-            response.setData("error");
+            message.setMessage("error");
+            response.setData(message);
             response.setMessage("categoria no encontrada");
         }
 

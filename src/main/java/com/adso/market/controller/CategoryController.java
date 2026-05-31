@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.adso.market.dto.HttpGlobalResponse;
+import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.category.CategoryNameDTO;
 import com.adso.market.service.CategoryService;
 
@@ -43,7 +44,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/delete-category/{id}")
-    public HttpGlobalResponse<String> deleteCategory(@PathVariable Long id) {
+    public HttpGlobalResponse<MessageResponseDTO> deleteCategory(@PathVariable Long id) {
         return categoryService.deleteCategory(id);
 
     }
