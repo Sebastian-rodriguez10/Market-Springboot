@@ -2,6 +2,7 @@ package com.adso.market.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Sale {
 
     @PastOrPresent(message = "La fecha invalida")
     @Column(name = "sale_date")
-    private LocalDate saleDate;
+    private LocalDateTime saleDate;
 
     @Column(nullable = false, columnDefinition = "DECIMAL(10,2) DEFAULT 0")
     @NotNull(message = "El campo es obligatorio")
