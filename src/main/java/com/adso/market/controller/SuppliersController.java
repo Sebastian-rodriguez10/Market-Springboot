@@ -11,6 +11,7 @@ import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.suppliers.SupplierDTO;
 import com.adso.market.service.SuppliersService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class SuppliersController {
 
 
     @PostMapping("/add-supplier")
-    public ResponseEntity<HttpGlobalResponse<SupplierDTO>> createSupplier(@RequestBody SupplierDTO supplierDTO) {
+    public ResponseEntity<HttpGlobalResponse<SupplierDTO>> createSupplier(@Valid @RequestBody SupplierDTO supplierDTO) {
         HttpGlobalResponse<SupplierDTO> response = suppliersService.createSupplier(supplierDTO);
         try {
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -43,7 +44,7 @@ public class SuppliersController {
     }
 
     @PutMapping("/update-supplier/{id}")
-    public ResponseEntity<HttpGlobalResponse<SupplierDTO>> updateSupplier(@PathVariable Long id, @RequestBody SupplierDTO supplierDTO) {
+    public ResponseEntity<HttpGlobalResponse<SupplierDTO>> updateSupplier(@PathVariable Long id,@Valid @RequestBody SupplierDTO supplierDTO) {
         HttpGlobalResponse<SupplierDTO> response = suppliersService.updateSupplier(id, supplierDTO);
         try {
             return ResponseEntity.status(HttpStatus.OK).body(response);
