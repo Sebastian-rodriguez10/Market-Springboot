@@ -15,6 +15,6 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
     
     @Modifying 
     @Procedure(procedureName = "pa_calcular_totales_venta")
-    void pa_calcular_totales_venta(@Param("p_id_sale") Long idSale);
+    void pacalcularTotalesventa(@Param("p_id_sale") Long idSale);
 
 }
