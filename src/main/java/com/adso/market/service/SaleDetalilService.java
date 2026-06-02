@@ -34,17 +34,18 @@ public class SaleDetalilService {
         Optional<Products> optionaProduct = productsRepository.findById(registerSaleDetailDTO.getIdProduct());
 
         if(optionaProduct.isPresent()&&optionalSale.isPresent()){
+
+            Products productsFound = optionaProduct.get();
+
+            saleDetailsRepository.postReduceStock(productsFound.getId(), registerSaleDetailDTO.getQuiantity());
             SaleDetail saleDetail = new SaleDetail();
             saleDetail.setSale(optionalSale.get());
             saleDetail.setProduct(optionaProduct.get());
             saleDetail.setQuantity(registerSaleDetailDTO.getQuiantity());
             saleDetail.setUnitPrice(registerSaleDetailDTO.getUnitPrice());
-            saleDetail.setSubtotal(registerSaleDetailDTO.getSubtotal());
             saleDetailsRepository.save(saleDetail);
 
-            Products productsFound = optionaProduct.get();
 
-            saleDetailsRepository.postReduceStock(productsFound.getId(), registerSaleDetailDTO.getQuiantity());
             response.setMessage("se creo con exito");
             return response;
         }else{

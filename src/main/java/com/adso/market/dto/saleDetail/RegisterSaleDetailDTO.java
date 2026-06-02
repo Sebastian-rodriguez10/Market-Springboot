@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 public class RegisterSaleDetailDTO {
     
-    
+    private Long idEmployees;
+
     private Long idSale;
 
     private Long idProduct;
@@ -16,6 +17,4 @@ public class RegisterSaleDetailDTO {
 
     private BigDecimal unitPrice;
 
-    private BigDecimal subtotal;
-    
 }
