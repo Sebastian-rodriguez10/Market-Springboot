@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import com.adso.market.dto.HttpGlobalResponse;
 import com.adso.market.dto.MessageResponseDTO;
 import com.adso.market.dto.product.ProductDTO;
-import com.adso.market.entity.Products;
 import com.adso.market.service.ProductService;
 
 import jakarta.validation.Valid;
